@@ -25,6 +25,11 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener {
             val text : String = if (logic.complicatedFunction() == 42) "Yes that's the thing." else "Oh Nooooees!"
             label.text = text
+            Analytics.trackEvent("Fab tapped!")
+        }
+
+        label.setOnClickListener {
+            Analytics.trackEvent("Label tapped!")
         }
 
         label.setOnLongClickListener {
