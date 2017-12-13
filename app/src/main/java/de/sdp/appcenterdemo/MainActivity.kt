@@ -1,10 +1,12 @@
 package de.sdp.appcenterdemo
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -18,9 +20,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        AppCenter.start(application, "6a93704f-2dd6-4e6d-acc2-0c5f10b20757", Analytics::class.java, Crashes::class.java)
+
         fab.setOnClickListener {
             val text : String = if (logic.complicatedFunction() == 42) "Yes that's the thing." else "Oh Nooooees!"
             label.text = text
+        }
+
+        label.setOnLongClickListener {
+            Crashes.generateTestCrash()
+            true
         }
 
     }
