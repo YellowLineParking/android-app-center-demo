@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        AppCenter.start(application, "6a93704f-2dd6-4e6d-acc2-0c5f10b20757", Analytics::class.java, Crashes::class.java)
+        AppCenter.start(application, "21a01265-a855-4075-a33f-2cb8152c4133", Analytics::class.java, Crashes::class.java)
 
         fab.setOnClickListener {
             val text : String = if (logic.complicatedFunction() == 42) "Yes that's the thing." else "Oh Nooooees!"
